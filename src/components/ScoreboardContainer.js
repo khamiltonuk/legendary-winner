@@ -1,17 +1,20 @@
 import { connect } from "react-redux";
 import Scoreboard from "./Scoreboard";
-import { addPlayer } from "../actions";
+import { addPlayer, closeModal, openModal } from "../actions";
 import "./Scoreboard.css";
 
 export const ScoreboardContainer = connect(
   function mapStateToProps(state) {
     return {
-      players: state.players
+      players: state.players,
+      showModal: state.showModal
     };
   },
   function mapDispatchToProps(dispatch) {
     return {
-      addPlayer: name => dispatch(addPlayer(name))
+      addPlayer: name => dispatch(addPlayer(name)),
+      closeModal: () => dispatch(closeModal()),
+      openModal: () => dispatch(openModal())
     };
   }
 )(Scoreboard);

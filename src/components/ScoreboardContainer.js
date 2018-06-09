@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Scoreboard from "./Scoreboard";
-import { addPlayer, closeModal, openModal } from "../actions";
+import { addPlayer, closeModal, openModal, enterNumber } from "../actions";
 import "./Scoreboard.css";
 
 export const ScoreboardContainer = connect(
@@ -14,7 +14,8 @@ export const ScoreboardContainer = connect(
     return {
       addPlayer: name => dispatch(addPlayer(name)),
       closeModal: () => dispatch(closeModal()),
-      openModal: () => dispatch(openModal())
+      openModal: () => dispatch(openModal()),
+      enterNumber: value => dispatch(enterNumber(value))
     };
   }
 )(Scoreboard);

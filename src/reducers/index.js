@@ -1,8 +1,15 @@
-import { ADD_PLAYER, OPEN_MODAL, CLOSE_MODAL } from "../constants";
+import {
+  ADD_PLAYER,
+  OPEN_MODAL,
+  CLOSE_MODAL,
+  ENTER_NUMBER
+} from "../constants";
+
+import { addScore } from "../helpers/helper";
 
 const initialState = {
   players: [],
-  showModal: false
+  showModal: true
 };
 
 export default function(state = initialState, { type, payload }) {
@@ -11,8 +18,10 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, showModal: true };
     case CLOSE_MODAL:
       return { ...state, showModal: false };
+    case ENTER_NUMBER:
+      return { ...state, players: addScore(state.players, payload) };
     case ADD_PLAYER:
-      return { ...state, players: [...state.players, { name: payload }] };
+      return { ...state, players: [...state.players, payload] };
     default:
       return state;
   }

@@ -7,8 +7,10 @@ export default class AddPlayer extends Component {
     if (this._inputElement.value !== "") {
       var newItem = {
         name: this._inputElement.value,
-        key: shortid.generate()
+        key: shortid.generate(),
+        turn: false
       };
+      console.log();
 
       this.props.addPlayer(newItem);
 
@@ -24,7 +26,7 @@ export default class AddPlayer extends Component {
           id="name"
           type="text"
           autoFocus="true"
-          autocomplete="name"
+          autoComplete="name"
           rplaceholder="e.g. Jimbo"
           ref={a => (this._inputElement = a)}
         />
